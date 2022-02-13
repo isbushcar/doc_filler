@@ -1,0 +1,6 @@
+.venv
+*.rdb
+*.docx
+*.xlsx
+.DS_Store
+.idea/
