@@ -135,3 +135,9 @@ CELERY_TASK_SERIALIZER = 'json'
 DOCS_DIR = os.path.join(BASE_DIR, 'docs')
 if not os.path.exists(DOCS_DIR):
     os.makedirs(DOCS_DIR)
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'root')
+STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'static'),
+]
