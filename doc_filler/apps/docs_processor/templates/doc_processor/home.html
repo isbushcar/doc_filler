@@ -1,20 +1,5 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'boot/css/bootstrap.min.css' %}">
-<link rel="stylesheet" href="{% static 'boot/css/bootstrap.css' %}">
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top mb-5">
-    <a class="navbar-brand" href="#">DocFiller</a>
-    <div class="collapse navbar-collapse" id="navbar">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">GitHub</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+{% extends "doc_processor/base_generic.html" %}
+{% block content %}
 <main role="main" class="container">
     <div class="card align-items-center w-100 p-3 text-center">
         <h1>Выберите файлы</h1>
@@ -36,6 +21,4 @@
         </form>
     </div>
 </main>
-<script src="{% static 'boot/js/bootstrap.bundle.js' %}"></script>
-<script src="{% static 'boot/js/bootstrap.js' %}"></script>
-</body>
+{% endblock content %}
