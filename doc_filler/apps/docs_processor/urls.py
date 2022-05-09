@@ -5,4 +5,5 @@ from . import views
 urlpatterns = [
   path('', views.HomeView.as_view(), name='home'),
   path('task/<str:task_id>/', views.TaskView.as_view(), name='task'),
+  path('get/<str:file_name>', views.GetFile.as_view(), name='get_file')
 ]
