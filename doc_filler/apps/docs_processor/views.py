@@ -16,7 +16,7 @@ class HomeView(View):
     form = FileUploadForm
 
     def get(self, request):
-        return render(request, 'doc_processor/home.html', {'form': self.form()})
+        return render(request, 'doc_filler/doc_processor/home.html', {'form': self.form()})
 
     def post(self, request):
         form = self.form(request.POST, request.FILES)
@@ -45,13 +45,13 @@ class TaskView(View):
         if task.status == 'SUCCESS':
             return render(
                 request,
-                'doc_processor/task_succeed.html',
+                'doc_filler/doc_processor/task_succeed.html',
                 {'file_link': reverse('get_file', args=[task.get()])},
             )
         if task.status == 'FAILURE':
-            return render(request, 'doc_processor/task_failed.html')
+            return render(request, 'doc_filler/doc_processor/task_failed.html')
         if task.status == 'PENDING':
-            return render(request, 'doc_processor/task_pending.html')
+            return render(request, 'doc_filler/doc_processor/task_pending.html')
 
 
 class GetFile(View):
