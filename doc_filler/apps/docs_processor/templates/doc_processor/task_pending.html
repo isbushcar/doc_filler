@@ -1,0 +1,13 @@
+{% extends "doc_processor/base_generic.html" %}
+{% block content %}
+    <script>
+        window.setTimeout(function () {
+            location.reload();
+        }, 1000)
+    </script>
+    <main role="main" class="container">
+        <div class="card align-items-center w-100 p-3 text-center">
+            <h3>Документ собирается, подождите...</h3>
+        </div>
+    </main>
+{% endblock content %}
