@@ -53,11 +53,12 @@ def fill_document(
         else:
             base_doc.append(Document(doc))
 
-    combined_doc_name = os.path.join(
+    combined_doc_name = f"{str(uuid.uuid4())}.docx"
+    combined_doc_path = os.path.join(
         settings.DOCS_DIR,
-        f"{str(uuid.uuid4())}.docx",
+        combined_doc_name,
     )
-    base_doc.save(combined_doc_name)
+    base_doc.save(combined_doc_path)
 
     for num, doc in enumerate(generated_docs):
         os.remove(doc)
