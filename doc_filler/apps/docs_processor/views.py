@@ -9,6 +9,7 @@ from django.views import View
 
 from doc_filler.apps.docs_processor.forms import FileUploadForm
 from doc_filler.apps.docs_processor.tasks import fill_document
+from django.shortcuts import reverse
 
 
 class HomeView(View):
@@ -39,16 +40,26 @@ class HomeView(View):
 
 class TaskView(View):
 
-    def get(self, _, task_id):
+    def get(self, request, task_id):
         task = current_app.AsyncResult(task_id)
         if task.status == 'SUCCESS':
-            return FileResponse(
-                open(
-                    os.path.join(settings.DOCS_DIR, task.get()),
-                    'rb',
-                )
+            return render(
+                request,
+                'doc_processor/task_succeed.html',
+                {'file_link': reverse('get_file', args=[task.get()])},
             )
         if task.status == 'FAILURE':
-            return HttpResponse("Task failed.")
+            return render(request, 'doc_processor/task_failed.html')
         if task.status == 'PENDING':
-            return HttpResponse("Task is pending. Try refreshing the page.")
+            return render(request, 'doc_processor/task_pending.html')
+
+
+class GetFile(View):
+
+    def get(self, _, file_name):
+        return FileResponse(
+            open(
+                os.path.join(settings.DOCS_DIR, file_name),
+                'rb',
+            )
+        )
