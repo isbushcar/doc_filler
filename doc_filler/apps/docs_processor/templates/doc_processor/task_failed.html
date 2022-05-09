@@ -1,0 +1,11 @@
+{% extends "doc_processor/base_generic.html" %}
+{% load static %}
+{% block content %}
+    <main role="main" class="container">
+        <div class="card align-items-center w-100 p-3 text-center">
+            <h3>Что-то пошло не так. Убедитесь, что используете правильный формат файлов.
+                Также вы можете <a href="https://t.me/isbushcar">сообщить об ошибке</a>.</h3>
+            <img src="{% static 'failed.jpg' %}" alt="Failed">
+        </div>
+    </main>
+{% endblock content %}
