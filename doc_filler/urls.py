@@ -18,8 +18,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from doc_filler.apps.users.views import UserLoginView as UserLogin, UserLogoutView as UserLogout
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('doc_filler.apps.docs_processor.urls')),
+    path('users/', include('doc_filler.apps.users.urls')),
+    path('login/', UserLogin.as_view(), name='login'),
+    path('logout/', UserLogout.as_view(), name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.DOCS_DIR)

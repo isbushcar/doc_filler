@@ -1,0 +1,74 @@
+[
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$MCcrdj5LO6zE9JJvDFe3Cx$F25n8dOxfcL/O1RszUbkPRQ8Lc0MsRYGg1TNUUejwTE=",
+        "last_login": "2021-08-21T06:21:52.948Z",
+        "is_superuser": false,
+        "username": "SansaStark",
+        "first_name": "Sansa",
+        "last_name": "Stark",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-08-15T07:59:21.887Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$A66jExQcxNPzkX8JgGQaT9$9MyYX3FyHum+7tVesP0Gbc7NeGZcmMhR3I4ZQaiU5uc=",
+        "last_login": "2021-08-22T04:11:40.839Z",
+        "is_superuser": false,
+        "username": "Tirion",
+        "first_name": "Tirion",
+        "last_name": "Lannister",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-08-21T06:43:15.358Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$QmMTGL2fcufjIzxhOyD95g$msRPnY47l8RCJZQqQh+ZvEmT23yJJoQ1vy1mSGh1afs=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Brann",
+        "first_name": "Brann",
+        "last_name": "Stark",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-08-22T03:44:21.866Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$QmMTGL2fcufjIzxhOyD95g$msRPnY47l8RCJZQqQh+ZvEmT23yJJoQ1vy1mSGh1afs=",
+        "last_login": null,
+        "is_superuser": true,
+        "username": "KingJoffrey",
+        "first_name": "Joffrey",
+        "last_name": "Baratheon",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-08-22T03:44:21.866Z",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]

@@ -1,0 +1,11 @@
+{% extends "layouts/form.html" %}
+
+{% block header %}Регистрация{% endblock header %}
+
+{% block form %}
+    {{ form.as_p }}
+{% endblock form %}
+
+{% block button %}
+    <button class="btn btn-secondary mt-2" type="submit">Зарегистрироваться</button>
+{% endblock button %}
