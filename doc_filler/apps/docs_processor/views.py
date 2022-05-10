@@ -7,12 +7,13 @@ from django.http import HttpResponse, FileResponse
 from django.shortcuts import render, redirect
 from django.views import View
 
+from doc_filler.shared_mixin_classes import CustomLoginRequiredMixin
 from doc_filler.apps.docs_processor.forms import FileUploadForm
 from doc_filler.apps.docs_processor.tasks import fill_document
 from django.shortcuts import reverse
 
 
-class HomeView(View):
+class HomeView(CustomLoginRequiredMixin, View):
     form = FileUploadForm
 
     def get(self, request):
@@ -38,7 +39,7 @@ class HomeView(View):
         return HttpResponse("Something went wrong.")
 
 
-class TaskView(View):
+class TaskView(CustomLoginRequiredMixin, View):
 
     def get(self, request, task_id):
         task = current_app.AsyncResult(task_id)
@@ -54,7 +55,7 @@ class TaskView(View):
             return render(request, 'doc_filler/doc_processor/task_pending.html')
 
 
-class GetFile(View):
+class GetFile(CustomLoginRequiredMixin, View):
 
     def get(self, _, file_name):
         return FileResponse(
