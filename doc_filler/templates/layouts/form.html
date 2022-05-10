@@ -1,11 +1,13 @@
 {% extends "doc_filler/base_generic.html" %}
 {% load i18n %}
 {% block content %}
-    <h1 class="my-4">{% block header %}{% endblock header %}</h1>
-    <form method="post">
-        {% csrf_token %}
-        {% block form %}
-        {% endblock form %}
-        {% block button %}{% endblock button %}
-    </form>
+    <div class="m-4">
+        <h1 class="my-4">{% block header %}{% endblock header %}</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% block form %}
+            {% endblock form %}
+            {% block button %}{% endblock button %}
+        </form>
+    </div>
 {% endblock content %}
