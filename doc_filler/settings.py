@@ -132,7 +132,7 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
 
 
-DOCS_DIR = os.path.join(BASE_DIR, 'docs')
+DOCS_DIR = os.path.join(BASE_DIR, 'docs/')
 if not os.path.exists(DOCS_DIR):
     os.makedirs(DOCS_DIR)
 
