@@ -6,3 +6,6 @@
 .idea/
 docs/*
 root/
+.env
+data/
+test_script.py
