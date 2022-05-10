@@ -1,0 +1,51 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres
+    restart: on-failure
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    healthcheck:
+      test: [ "CMD", "psql", "-c", 'SELECT 1', "-d", "${POSTGRES_DB}",
+              "-U", "${POSTGRES_USER}", "-W", "${POSTGRES_PASSWORD}"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+  web:
+    build: .
+    image: app
+    command: bash -c 
+              "mkdir ${STATIC_ROOT}
+                & python manage.py collectstatic --no-input
+                && python manage.py makemigrations
+                && python manage.py migrate
+                && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    links:
+      - "db:database"
+    environment:
+      - POSTGRES_NAME=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    depends_on:
+      - db
+    restart: on-failure
+  redis:
+    image: redis
+    command: redis-server
+  celery:
+    build: .
+    image: celery
+    command: celery -A doc_filler worker --loglevel=info
+    volumes:
+      - .:/app
+    links:
+      - "redis:redis"
