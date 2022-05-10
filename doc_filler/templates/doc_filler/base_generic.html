@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{% static 'boot/css/bootstrap.min.css' %}">
 <link rel="stylesheet" href="{% static 'boot/css/bootstrap.css' %}">
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top mb-5">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <a class="navbar-brand" href="#">DocFiller</a>
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
@@ -17,8 +17,16 @@
         </ul>
     </div>
 </nav>
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-dark alert-dismissible" role="alert">
+            <button class="close" type="button" data-dismiss="alert" aria-label="close">×</button>
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
 {% block content %}
 {% endblock content %}
-<script src="{% static 'boot/js/bootstrap.bundle.js' %}"></script>
-<script src="{% static 'boot/js/bootstrap.js' %}"></script>
+<script src="{% static 'boot/js/jquery-3.5.1.min.js' %}"></script>
+<script src="{% static 'boot/js/bootstrap.min.js' %}"></script>
 </body>
