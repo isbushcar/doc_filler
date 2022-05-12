@@ -85,12 +85,16 @@ WSGI_APPLICATION = 'doc_filler.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DB', 'mydatabase'),
+        'ENGINE': 'django.db.backends.sqlite3' if os.environ.get('DEBUG', False) else 'django.db.backends.postgresql',
+        'NAME': BASE_DIR / 'db.sqlite3' if os.environ.get('DEBUG', False) else os.environ.get('POSTGRES_DB', 'mydatabase'),
         'USER': os.environ.get('POSTGRES_USER', 'mydatabaseuser'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'mypassword'),
         'HOST': 'database',
         'PORT': '5432',
+'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
     }
 }
 
