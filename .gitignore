@@ -9,3 +9,4 @@ root/
 .env
 data/
 test_script.py
+__pycache__
