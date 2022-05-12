@@ -156,3 +156,5 @@ STATICFILES_DIRS = [
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+CSRF_TRUSTED_ORIGINS = ["http://localhost:8000", "https://localhost"]
