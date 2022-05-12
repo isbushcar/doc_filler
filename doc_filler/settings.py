@@ -157,4 +157,4 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-CSRF_TRUSTED_ORIGINS = ["http://localhost:8000", "https://localhost"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:8000", "http://5.188.90.165:8000"]
