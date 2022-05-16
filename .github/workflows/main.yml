@@ -1,0 +1,23 @@
+name: lazy_deploy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  pull_and_up_the_new_containers:
+    name: deploy_and_check
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+    - run: pip install requests paramiko
+    - run: python3 deploy_script.py
+      env:
+        HOST: ${{ secrets.HOST }}
+        USER: ${{ secrets.USER }}
+        PASS: ${{ secrets.PASS }}
