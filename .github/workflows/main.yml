@@ -1,0 +1,25 @@
+name: lazy_deploy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: pull and up the containers
+        uses: fifsky/ssh-action@master
+        with:
+          command: |
+            cd doc_filler
+            git pull
+            docker-compose down
+            docker-compose up
+          host: ${{ secrets.HOST }}
+          user: ${{ secrets.USER }}
+          pass: ${{ secrets.PASS }}
