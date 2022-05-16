@@ -20,6 +20,8 @@ jobs:
             git pull
             docker-compose down
             docker-compose up
+            exit 1
           host: ${{ secrets.HOST }}
           user: ${{ secrets.USER }}
           pass: ${{ secrets.PASS }}
+          args: "-tt"
