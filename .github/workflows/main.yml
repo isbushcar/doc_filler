@@ -7,22 +7,13 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  pull_and_up_the_new_containers:
+    name: coverage
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
-      - name: pull and up the containers
-        uses: fifsky/ssh-action@master
-        with:
-          command: |
-            cd doc_filler
-            git pull
-            docker-compose down
-            docker-compose up
-            exit 1
-          host: ${{ secrets.HOST }}
-          user: ${{ secrets.USER }}
-          pass: ${{ secrets.PASS }}
-          key: ${{ secrets.PRIVATE_KEY }}
-          args: "-tt"
+    - uses: actions/checkout@master
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+    - run: pip install requests paramiko
+    - run: python3 deploy_script.py
