@@ -8,7 +8,7 @@ on:
 
 jobs:
   pull_and_up_the_new_containers:
-    name: coverage
+    name: deploy_and_check
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -17,3 +17,7 @@ jobs:
         python-version: '3.8'
     - run: pip install requests paramiko
     - run: python3 deploy_script.py
+      env:
+        HOST: ${{ secrets.HOST }}
+        USER: ${{ secrets.USER }}
+        PASS: ${{ secrets.PASS }}
