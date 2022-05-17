@@ -22,6 +22,7 @@ def run_ssh_command(
         password=password,
         look_for_keys=False,
     )
+    print('Connected. Sending commands...')
     stdin, stdout, stderr = ssh_cli.exec_command(command)
     stdout.channel.recv_exit_status()
     ssh_cli.close()
@@ -38,11 +39,13 @@ def check_health(
         max_tries: int = 10,
         delay: int = 30,
 ):
-    current_try: int = 0
+    current_try: int = 1
     while current_try <= max_tries:
         response = requests.get(f'{schema}://{host}:{port}')
         if response.status_code == 200:
+            print(f'Try {current_try} succeed')
             return exit(0)
+        print(f'Try {current_try}. Got code {response.status_code}')
         time.sleep(delay)
         current_try += 1
     return exit(1)
