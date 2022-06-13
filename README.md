@@ -22,10 +22,3 @@ such as using Django secret key and other environment variables, setting up data
 In case you are going to use this app in production, please read the [official docs.](https://docs.djangoproject.com/)
 
 Sorry, the only available language in project is Russian for now. I'm planning to add English soon.
-
-Small roadmap:
-1. Прикрутить API
-2. Бот для телеги, который ходит по апи?
-3. Добавить проверку на владельца документа
-4. Сделать перевод
-5. Сделать кастомные ошибки у формы
